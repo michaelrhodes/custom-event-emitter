@@ -1,9 +1,9 @@
 # custom-event-emitter
-custom-event-emitter is a browser mixin that makes emitting [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) objects really simple. The trade-off is that all said events bubble, and are cancelable.
+custom-event-emitter is a browser mixin that makes emitting [CustomEvent](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent) objects really simple.
 
 ## install
 ```sh
-$ npm install michaelrhodes/custom-event-emitter
+$ npm install custom-event-emitter
 ```
 
 ## usage
@@ -12,7 +12,11 @@ var emitter = require('custom-event-emitter')
 var element = document.createElement('p')
 
 // Adds an emit function to the element.
-emitter.call(element)
+// (the second argument is optional)
+emitter.call(element, {
+  bubbles: true,
+  cancelable: true
+})
 
 element.addEventListener('hi', function(e) {
   console.log(e.detail)
@@ -20,6 +24,11 @@ element.addEventListener('hi', function(e) {
 })
 
 element.emit('hi', 'how are you?')
+```
+
+You can run the above example like so:
+```sh
+$ npm run example
 ```
 
 ## license
