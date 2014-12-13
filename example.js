@@ -2,7 +2,11 @@ var emitter = require('./index')
 var element = document.createElement('p')
 
 // Adds an emit function to the element.
-emitter.call(element)
+// (the second argument is optional)
+emitter.call(element, {
+  bubbles: true,
+  cancelable: true
+})
 
 element.addEventListener('hi', function(e) {
   console.log(e.detail)
